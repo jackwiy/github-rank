@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <title> 36Kr快讯 </title>
+  <meta name="description" content="36Kr快讯">
+  <style>
+    * { box-sizing: border-box; }
+    html, body, ul, li, h1 { margin: 0; padding: 0 }
+    html, body { font-size: 16px; font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif; }
+    ul { list-style: none; }
+    body { text-align: center; }
+    a { color: #333; text-decoration: none; transition: all .2s ease-in; }
+    a:hover { color: #1600ff; }
+    a.github-corner:hover .octo-arm { animation: octocat-wave 560ms ease-in-out; }
+    a.github-corner svg { fill: #f1f1f1; color: #000; position: absolute; top: 0; border: 0; right: 0; z-index: 99; width: 70px; height: 70px; }
+    a.github-corner { position: fixed; z-index: 9999; top: 0; right: 0; }
+    .title { padding: 46px 0 0 0; font-size: 18px; line-height: 24px; }
+    .time, .footer { padding: 5px 0 2px 0; font-size: 12px; color: #adadad; }
+    .tabs { padding: 10px 0 15px 0;}
+    .tabs a { background: #e2e2e2; display: inline-block; padding: 3px 7px; font-size: 12px; line-height: 16px; color: #0366d6; }
+    .tabs a.active { background: #696969; color: #efefef; }
+    .footer { padding: 10px 0 30px 0; }
+    .list { text-align: left; max-width: 470px; margin: 0 auto; padding-bottom: 10px; background-color: #efefef; border-radius: 5px; overflow: hidden; }
+    .list img { width: 36px; height: 36px; border-radius: 3px; display: block; margin: 0 auto; background-color: #e2e2e2; border: 0; overflow: hidden; }
+    .list a { color: #0366d6; }
+    .list a:hover { color: #1600ff; }
+    .list li { padding: 5px; margin: 0 8px; transition: all .3s; border-bottom: 1px solid #d8d8d8; }
+    .list li.rank-title { background-color: #e2e2e2; margin: 0; padding: 7px 13px; margin-bottom: 10px; border-radius: 0; font-size: 14px; line-height: 16px; }
+    .list li.rank-title:hover { background: #e2e2e2; }
+    .list li:last-child, .list li.rank-title { border-bottom: 0; }
+    .list li:hover { background: rgba(255, 255, 255, 0.56); }
+    .list li > div { display: table-cell; vertical-align: top; font-size: 14px; }
+    .list li div.rank { padding: 0 8px; }
+    .list li div.rank span { font-weight: bold; }
+    .list li div.details { padding: 2px 0 0 9px; font-size: 12px; float: left; color: #b9b9b9; }
+    .list li div.details a { color: #b9b9b9; transition: all .3s; }
+    .list li div.details a:hover { color: #1600ff; }
+    .list li div.details a:hover svg { fill: #1600ff; }
+    .list li div.details * { vertical-align: middle; }
+    .list li div.details .localtion { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 150px; display: inline-block; height: 14px; }
+    .list li div.details svg { width: 12px; height: 12px; margin-top: 0; margin-right: 2px; fill: #b9b9b9; display: inline-block; }
+    .list li > div.info { width: 100%; }
+    .list li > div.info i { color: #717171; }
+    .list li > div.info a:hover i { color: #333; }
+    .list li div.sub-title { color: #333; margin: 4px 0 0 3px;}
+    .list li a.language,
+    .list li span.star { height: 18px; background: #e2e2e2; display: inline-block; padding: 2px 4px; border-radius: 3px; }
+    .list li div.followers { font-size: 12px; color: #7d7d7d; white-space:nowrap; padding-left: 5px; padding-top: 2px; border-radius: 3px; }
+    .list li div.followers a { color: #545454; }
+    .list li div.followers * { vertical-align: middle; }
+    .list li div.followers svg { vertical-align: text-top; display: inline-block; fill: #9E9E9E; width: 14px; height: 14px; }
+    .list .select { float: right; line-height: 14px; line-height: 16px; }
+    .list .select .active { color: #333; font-weight: bold; }
+    .list.repos.trending .language > span { border-radius: 50%; display: inline-block; position: relative; height: 10px; width: 10px; vertical-align: middle; top: -1px; margin-right: 4px; }
+    .list.repos li div.followers { display: inline-block; padding-right: 5px; }
+    .list.repos li div.details { width: 100%; }
+    @keyframes octocat-wave{
+      0%,100%{-webkit-transform:rotate(0); transform:rotate(0);}
+      20%,60%{-webkit-transform:rotate(-25deg); transform:rotate(-25deg);}
+      40%,80%{-webkit-transform:rotate(10deg); transform:rotate(10deg);}
+    }
+  </style>
+</head>
+<body>
+  <a href="https://github.com/jaywcjlove/github-rank" target="_blank" class="github-corner">
+    <svg viewBox="0 0 250 250">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path class="octo-arm" fill="currentColor" style="transform-origin: 130px 106px;" d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"></path>
+      <path fill="currentColor" class="octo-body" d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"></path>
+    </svg>
+  </a>
+  <h1 class="title"> 36Kr快讯 </h1>
+  <div class="time">Last cache created on 2019/10/24 by Github API v3.</div>
+  <div class="tabs">
+    <a class="" href="index.html">Users</a>
+    <a class="" href="repos.html">Repos</a>
+    <a class="" href="trending.html">Trending</a>
+    <a class="" href="sifou-daily.html">Sifou</a>
+    <a class="" href="toutiao-7.html">开发头条</a>
+    <a class="active" href="36kr.html">36Kr</a>
+  </div>
+<ul class="list">
+    <li class="rank-title">
+      <a href="https://36kr.com/newsflashes" target="_blank">36Kr快讯</a>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 1">1</span>
+          <a href="https://36kr.com/p/5258563" target="_blank" title="抖音即将上线K歌小程序“抖唱”">抖音即将上线K歌小程序“抖唱”</a>
+        </div>
+        <div class="details">
+          36氪获悉，抖音App即将上线一款K歌⼩程序，名为“抖唱”，其核⼼功能是异步合唱：⾳乐达⼈发布合唱MV视频到“抖唱”后，粉丝可以在该合唱MV中加⼊⾃⼰的声⾳和表演，制作成为新的MV视频并再次发布，完成一次“同屏演唱”。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 2">2</span>
+          <a href="https://36kr.com/p/5256593" target="_blank" title="“竹间智能”完成4500万美元B+轮融资">“竹间智能”完成4500万美元B+轮融资</a>
+        </div>
+        <div class="details">
+          36氪获悉，“竹间智能”近日宣布完成4500万美元B+轮融资。本轮由某重要战略合作方、云晖资本及领沨资本联合领投，凯思博投资、众安资本、趋势资本、普华资本、一路资本跟投。本轮融资后，竹间智能将继续在NLP、情感计算及多模态人机交互技术领域持续创新突破；同时，研发升级Bot Factory™平台，推广标准化产品、进行生态落地构建，加速AI解决方案跨行业落地。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 3">3</span>
+          <a href="https://www.traveldaily.cn/article/132471" target="_blank" title="梁建章：入境游还有1000亿-2000亿美元的增量空间">梁建章：入境游还有1000亿-2000亿美元的增量空间</a>
+        </div>
+        <div class="details">
+          23日， “2019世界文化旅游大会”在西安举办。携程集团联合创始人、董事局主席梁建章出席论坛并表示，“中国入境游发展还有1000-2000亿美金的增量空间，这个数字占GDP的1-2%，占贸易顺差的30-60%。”他重申了导致中国入境游低迷的客观原因，包括签证不便、网络管制、支付不便等。（环球旅讯）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 4">4</span>
+          <a href="https://tech.sina.com.cn/i/2019-10-24/doc-iicezuev4496745.shtml" target="_blank" title="Facebook是否推送虚假政治广告遭质问，扎克伯格：我不知道">Facebook是否推送虚假政治广告遭质问，扎克伯格：我不知道</a>
+        </div>
+        <div class="details">
+          围绕“可不可以在Facebook发送虚假政治广告”这一问题，在周三的听证会上，纽约州民主党众议员奥卡西奥·科尔特斯询问了Facebook CEO扎克伯格。扎克伯格回应说：“我一时之间还不知道答案。”科尔特斯追问称：“也就是说你不知道能不能这样做？”扎克伯格说：“差不多是这个意思。”（新浪科技）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 5">5</span>
+          <a href="https://www.pingwest.com/w/196476" target="_blank" title="PayPal第三季度净利润4.62亿美元，同比增长6%">PayPal第三季度净利润4.62亿美元，同比增长6%</a>
+        </div>
+        <div class="details">
+          PayPal当地时间周三发布了该公司截至9月30日的2019财年第三季度财报。财报显示，按美国通用会计准则（GAAP），PayPal第三季度净营收为43.78亿美元，较去年同期的36.83亿美元增长19%；净利润为4.62亿美元，较去年同期的4.36亿美元增长6%。（品玩）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 6">6</span>
+          <a href="https://www.thepaper.cn/newsDetail_forward_4758149" target="_blank" title="扎克伯格在国会为天秤币辩护：我们在辩论时其他国家在行动">扎克伯格在国会为天秤币辩护：我们在辩论时其他国家在行动</a>
+        </div>
+        <div class="details">
+          当地时间10月23日，美国众议院金融服务委员会就Facebook的天秤币项目召开听证会。在听证会中，扎克伯格强调，如果美国监管者成功阻止了天秤币，那么将帮助其他国家发展他们的加密货币项目，这才会伤害到美国以及美元的统治地位。“当我们在辩论的时候，其他国家正在行动。”扎克伯格说，“如果美国不创新，那么我们就可能失去金融领导地位。”（澎湃）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 7">7</span>
+          <a href="https://tech.sina.com.cn/i/2019-10-24/doc-iicezuev4494897.shtml" target="_blank" title="谷歌被指开发内部工具监视员工集会，回应：理解有误">谷歌被指开发内部工具监视员工集会，回应：理解有误</a>
+        </div>
+        <div class="details">
+          谷歌员工指责该公司领导层开发了一种内部监视工具，用于监视工人为组织抗议和讨论劳工权利而采取的措施。根据员工备忘录，当员工创建的日历活动涉及10个以上的房间或100个以上的参与者时，该工具就会自动报告。备忘录称，最可能的解释是：“领导层试图立即了解任何工人组织的意图。”谷歌表示，它不会收集个人身份信息，也不会停止使用日历，而是在员工与大群人接触时增加一个减速带。（新浪科技）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 8">8</span>
+          <a href="https://www.leinews.com/n9871/detail.html" target="_blank" title="房多多更新招股书：发行区间13到15美元，段毅有44.4%投票权">房多多更新招股书：发行区间13到15美元，段毅有44.4%投票权</a>
+        </div>
+        <div class="details">
+          房多多更新了招股书，发行区间为13到15美元，将发行7,000,000股ADS，最高募集金额为1.05亿美元。房多多上市地为美国纳斯达克，证券代码为“DUO”。房多多每一ADS等于25股A类普通股。在首次公开募股之前，房多多的董事和高管合计持股47.3%，段毅为公司第一大股东，持股比例为19.8%。IPO后，段毅持股为17.9%，拥有44.4%的投票权。（雷帝网）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 9">9</span>
+          <a href="https://tech.sina.com.cn/mobile/n/n/2019-10-24/doc-iicezzrr4536805.shtml" target="_blank" title="第6代Apple Watch将更换组装工厂，富士康接单">第6代Apple Watch将更换组装工厂，富士康接单</a>
+        </div>
+        <div class="details">
+          关注电子产业链的媒体DigiTimes报道称，富士康和仁宝电子已获得组装2020年型号Apple Watch的订单，按苹果之前的命名方案，明年的新手表将是Apple Watch Series 6。另外，立讯精密可能会接受旧款Apple Watch的订单。（新浪数码）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 10">10</span>
+          <a href="https://new.qq.com/omn/FIN20191/FIN2019102400094700.html" target="_blank" title="亚马逊收购医疗保健领域初创企业“健康导航”">亚马逊收购医疗保健领域初创企业“健康导航”</a>
+        </div>
+        <div class="details">
+          亚马逊周三完成了在医疗保健领域的第二次收购，收购了一家名为“健康导航”（Health Navigator）的初创公司，该公司为数字医疗公司提供技术和服务。亚马逊表示健康导航将于9月加入该公司成立的亚马逊护理集团（Amazon Care group）。Amazon Care旨在为员工提供医疗福利，并通过视频访问提供虚拟医疗服务，如果需要额外的医疗服务，还可以进行家访。（腾讯证券）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 11">11</span>
+          <a href="https://www.pingwest.com/w/196469" target="_blank" title="谷歌将通过OTA更新来优化Pixel 4系列屏幕刷新率">谷歌将通过OTA更新来优化Pixel 4系列屏幕刷新率</a>
+        </div>
+        <div class="details">
+          据The Verge报道，Reddit用户发现，一旦显示屏亮度降至75%以下，Pixel 4的刷新率将降至60Hz。这意味着只有当亮度水平高时，用户才能获得完整的90Hz显示率。目前用户可以进入开发者选项强制开启90Hz，这样无论亮度如何，Pixel 4都会以90Hz的刷新率进行工作，但这可能会影响电池寿命。谷歌表示会在未来的版本中推出软件更新来提高屏幕刷新率。（品玩）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 12">12</span>
+          <a href="https://xuangubao.cn/article/553017" target="_blank" title="深圳金融监管开展炒鞋等风险排查">深圳金融监管开展炒鞋等风险排查</a>
+        </div>
+        <div class="details">
+          近日，中国人民银行上海分行下发 “金融简报”，提醒相关机构防范“炒鞋热”的击鼓传花式资本游戏。从深圳市金融监管局获悉，深圳10月初起已加大对辖区炒鞋、炒盲盒、炒扭蛋、炒娃娃机的排查力度，加强风险防控。（深圳特区报）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 13">13</span>
+          <a href="https://new.qq.com/omn/FIN20191/FIN2019102400054600.html" target="_blank" title="Facebook游说支出创下历史纪录">Facebook游说支出创下历史纪录</a>
+        </div>
+        <div class="details">
+          Facebook近日披露信息称，该公司在第三季度中花费了480万美元来对美国国会议员和监管机构施加影响，从而使得今年截至目前为止该公司在游说华盛顿方面的支出提高到了1230万美元——这一金额已经接近2018年全年1260万美元的水平。Facebook第三季度和今年迄今的游说支出一直都高于“FAANG”的其他公司。（腾讯证券）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 14">14</span>
+          <a href="https://new.qq.com/omn/TEC20191/TEC2019102400004600.html" target="_blank" title="扎克伯格：Facebook还将推出更多重要产品，本周将推出新新闻版面">扎克伯格：Facebook还将推出更多重要产品，本周将推出新新闻版面</a>
+        </div>
+        <div class="details">
+          据外媒报道，Facebook首席执行官扎克伯格在听证会上透露，Facebook还将推出更多重要产品，这可能会引发人们对其对社会影响的质疑。他说：“本周晚些时候，我们实际上会举行重大发布会，即将推出一项围绕新闻的重大倡议，我们正在与许多人合作，开发一种支持高质量新闻的新产品。”Facebook计划推出一个新闻版面，以汇聚顶级媒体的头条新闻为特色，不过这需要付费。（腾讯科技）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 15">15</span>
+          <a href="http://www.financialnews.com.cn/jg/ld/201910/t20191024_169899.html" target="_blank" title="央行副行长范一飞：推动实现不同App和条码互认互扫">央行副行长范一飞：推动实现不同App和条码互认互扫</a>
+        </div>
+        <div class="details">
+          中国人民银行副行长范一飞在第六届世界互联网大会“金融科技——深度融合·多向赋能”分论坛上表示，将进一步加快制定条码支付互联互通标准，统一编码规则、打通支付服务壁垒，推动实现不同App和条码互认互扫；在实体渠道积极试点以人脸特征为路由标识的支付应用，实施人脸识别终端登记注册管理，借助安全多方计算、分散存储、多因素认证等技术强化端到端个人隐私保护。（中国金融时报）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 16">16</span>
+          <a href="https://www.pingwest.com/w/196464" target="_blank" title="三星正式发布Exynos 990旗舰处理器，同时支持NSA和SA 5G">三星正式发布Exynos 990旗舰处理器，同时支持NSA和SA 5G</a>
+        </div>
+        <div class="details">
+          据sammobile报道，三星公司在2019年“三星技术活动”上正式推出了Exynos 990旗舰处理器，采用新的5G调制解调器Exynos Modem5123，支持所有的网络技术（5G双模、兼容2G-4G）。三星表示Exynos 990处理器和Exynos Modem 5123芯片将于今年年底进入批量生产。（品玩）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 17">17</span>
+          <a href="https://mp.weixin.qq.com/s/6-5DpTg1Gxx__OoDuG8ZFw" target="_blank" title="“微信行业助手小程序”正式发布">“微信行业助手小程序”正式发布</a>
+        </div>
+        <div class="details">
+          36氪获悉，“微信行业助手小程序”昨日正式发布，据微信方面介绍，商户的管理者、业务执行者、开发者，都可以通过“微信行业助手小程序”了解小程序在所属行业运营状况评估、关键指标展示、运营改善建议、行业案例资讯及能力开通指引等与行业相关的数据资料。目前，在公立医院、公交地铁、餐饮、美妆等17个行业，微信行业助手已经正式上线开放，其他行业也将在之后陆续推出。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 18">18</span>
+          <a href="https://finance.sina.com.cn/chanjing/gsnews/2019-10-23/doc-iicezuev4423955.shtml" target="_blank" title="华为何刚：5G手机已经成熟，Mate X卖16999不算贵">华为何刚：5G手机已经成熟，Mate X卖16999不算贵</a>
+        </div>
+        <div class="details">
+          华为消费者业务手机产品线总裁何刚在采访中表示，Mate 20 X （5G）发布的时候，大家认为5G还不成熟，而到了Mate30系列5G，无论是网络的配合还是手机的体验都已经相当成熟。关于华为Mate X的16999元定价，何刚表示折叠屏手机很多部件都不便宜，而且一些部件还需要华为帮助供应商一起解决，所以何刚认为当前的定价还是比较合适的。（新浪财经）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 19">19</span>
+          <a href="https://www.yicai.com/brief/100374592.html" target="_blank" title="波音：希望737 MAX飞机在年底前获得复飞批准">波音：希望737 MAX飞机在年底前获得复飞批准</a>
+        </div>
+        <div class="details">
+          波音公司周三表示，希望737 MAX飞机在今年年底前获得监管部门的复飞批准。此前波音在财报中称，第三季度737 MAX飞机的生产成本增加了9亿美元。（第一财经）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 20">20</span>
+          <a href="https://www.jiemian.com/article/3609056.html" target="_blank" title="印尼狮航空难公布调查结果：波音737 MAX飞机设计有缺陷">印尼狮航空难公布调查结果：波音737 MAX飞机设计有缺陷</a>
+        </div>
+        <div class="details">
+          据彭博社报道，印尼调查人员在周三的简报会上向狮航空难受害人家属表示，610航班的致命坠机是波音737 MAX飞机出现系统性设计缺陷而导致，最终事故报告将于当地时间本周五下午2点发布。简报的摘要以幻灯片形式提供给受害人亲属，报告显示，事故主要归咎于波音公司在MAX上引入自动系统MCAS，而没有充分向航空公司及其机组人员表明系统的存在，也没有指示如何操作该系统。（界面）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 21">21</span>
+          <a href="https://tech.sina.com.cn/i/2019-10-23/doc-iicezzrr4480932.shtml" target="_blank" title="扎克伯格：“天秤币”是必要创新，能否成功我也不确定">扎克伯格：“天秤币”是必要创新，能否成功我也不确定</a>
+        </div>
+        <div class="details">
+          据外媒报道，Facebook CEO马克·扎克伯格在听证会上表示，事实上，他也不清楚“天秤币”（Libra）能否按当初的预期去运作。扎克伯格说：“我相信这是我们需要建立的东西，但我知道，我现在还不是这方面的理想信使。在过去的几年里，我们经历了许多问题。我相信，有很多人希望这个提议是Facebook以外的其他任何人提出的。”（新浪科技）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 22">22</span>
+          <a href="https://finance.sina.com.cn/stock/usstock/c/2019-10-24/doc-iicezzrr4504061.shtml" target="_blank" title="摩根士丹利：Apple TV+到2025年将成为价值90亿美元的业务">摩根士丹利：Apple TV+到2025年将成为价值90亿美元的业务</a>
+        </div>
+        <div class="details">
+          摩根士丹利分析师凯蒂·休伯蒂在周二发布的一份报告中预测，受苹果新推出的Apple TV+流媒体服务的提振，苹果服务业务明年的增长将达到20%。休伯蒂称，“我们估计，到2025年，Apple TV+将成为一项价值90亿美元的收入业务，拥有1.36亿付费用户。”休伯蒂看好Apple TV+业务的增长，即使只有一小部分选择免费订阅的用户最终付费订阅。（新浪财经）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 23">23</span>
+          <a href="http://www.zqrb.cn/jrjg/bank/2019-10-24/A1571848830583.html" target="_blank" title="区块链信息服务备案名单透露银行布局，6家银行备案14项服务">区块链信息服务备案名单透露银行布局，6家银行备案14项服务</a>
+        </div>
+        <div class="details">
+          近期，国家互联网信息办公室官网发布公告，披露了第二批共309个境内区块链信息服务名称及备案编号。名单中，截至目前，全国已有6家银行备案14项区块链服务，布局方向主要为金融场景。此外，相关报告显示，今年上半年，银行的金融科技专利研究成果主要集中于区块链领域，占比专利总数量的一半以上。（证券日报）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 24">24</span>
+          <a href="https://www.cls.cn/roll/398956" target="_blank" title="特斯拉上海工厂提前试生产，2020年夏季将发布Model Y">特斯拉上海工厂提前试生产，2020年夏季将发布Model Y</a>
+        </div>
+        <div class="details">
+          特斯拉在第三季度财报中表示，上海工厂已经启动试生产，较原计划提前；相信中国将会成为Model 3最大的市场；预计到2020年夏季将发布Model Y；对今年交付量超过36万辆有信心；希望很快宣布2021年欧洲超级工厂的厂址。（财联社）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 25">25</span>
+          <a href="http://www.zqrb.cn/jrjg/hlwjr/2019-10-24/A1571848983369.html" target="_blank" title="监管释放P2P转型小贷公司信号，目前仅22家网贷平台有“牌”">监管释放P2P转型小贷公司信号，目前仅22家网贷平台有“牌”</a>
+        </div>
+        <div class="details">
+          近日，银保监会副主席祝树民在国新办新闻发布会上透露，推动不符合“一个办法、三个指引”的机构良性退出。今年以来，停业的P2P网贷机构已经超过了1200家，大部分为主动选择停业退出。除此之外，监管层也正研究P2P网贷机构向小贷公司转型的方案。据记者了解，截止到目前，已有22家正常运营网贷公司获得小贷牌照。不少网贷平台已试图向小贷公司转型。（证券日报）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 26">26</span>
+          <a href="https://tech.sina.com.cn/i/2019-10-24/doc-iicezuev4466929.shtml" target="_blank" title="eBay第三季度营收26.49亿美元，净利润同比降57%">eBay第三季度营收26.49亿美元，净利润同比降57%</a>
+        </div>
+        <div class="details">
+          eBay发布2019年第三季度财报。报告显示，eBay第三季度净营收为26.49亿美元，与去年同期的26.49亿美元相比持平；来自于持续运营业务的净利润为3.10亿美元，比去年同期的7.20亿美元下降57%。eBay第三季度营收和调整后每股收益均超出华尔街分析师预期，但第四季度业绩展望未达预期，导致其盘后股价大幅下跌近4%。（新浪科技）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 27">27</span>
+          <a href="https://www.thepaper.cn/newsDetail_forward_4750489" target="_blank" title="辞去CEO后，GoJek创始人纳迪姆加入印尼新内阁名单">辞去CEO后，GoJek创始人纳迪姆加入印尼新内阁名单</a>
+        </div>
+        <div class="details">
+          10月23日，开启第二任期的印度尼西亚总统佐科正式任命其新一届内阁成员，其中包括其总统竞选对手普拉博沃、印尼互联网公司GoJek创始人纳迪姆等。GoJek创始人之一纳迪姆被任命为教育与文化部长。近日，纳迪姆辞去了GoJek公司CEO的职位，当时外界推测他可能加入佐科内阁。（澎湃）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 28">28</span>
+          <a href="https://new.qq.com/omn/FIN20191/FIN2019102400005300.html" target="_blank" title="扎克伯格：若天秤币协会在监管批准前坚持推动其落地，Facebook将退出">扎克伯格：若天秤币协会在监管批准前坚持推动其落地，Facebook将退出</a>
+        </div>
+        <div class="details">
+          Facebook首席执行官马克·扎克伯格周三在众议院金融服务听证会上作证时表示，如果新成立的天秤币协会决定在没有监管机构批准的情况下推进该加密货币的落地，Facebook可能会被迫放弃自己的加密货币项目。扎克伯格称，“在美国监管机构批准之前，Facebook不会参与天秤座支付系统在全球任何地方的发布。”（腾讯证券）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 29">29</span>
+          <a href="https://tech.sina.com.cn/it/2019-10-23/doc-iicezzrr4455259.shtml" target="_blank" title="谷歌CEO：谷歌量子计算取得重大里程碑，应用前景广阔">谷歌CEO：谷歌量子计算取得重大里程碑，应用前景广阔</a>
+        </div>
+        <div class="details">
+          据外媒报道， 谷歌CEO桑德尔·皮查伊在公司网站上发表题为“我们的量子计算里程碑意味着什么”的文章，对谷歌在量子计算领域取得的重大突破进行了回顾，并对其应用前景进行了展望。皮查伊在文章中称，谷歌取得这一突破前后共花费了13年的时间。当初之所以押注量子计算，是因为谷歌相信，量子计算可以加速解决一些世界上最紧迫的问题，从气候变化到疾病。（新浪科技）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 30">30</span>
+          <a href="https://weibo.com/1891502860/IcRMbDGlJ?filter=hot&amp;root_comment_id=0&amp;type=comment#_rnd1571872515060" target="_blank" title="支付宝：有非法网贷冒用支付宝、花呗品牌，将全力打击">支付宝：有非法网贷冒用支付宝、花呗品牌，将全力打击</a>
+        </div>
+        <div class="details">
+          36氪获悉，支付宝发布声明称，“有一些非法网贷公司，为推广自己的业务，冒用‘支付宝’‘花呗’等蚂蚁金服旗下品牌在一些网络平台做广告，博取用户信任。这种行为侵犯了我们的合法权益，也严重误导了公众。我们正将这些公司告上法庭，要求其停止侵权行为并赔偿，目前法院已立案。”支付宝称，“过去几个月我们已经清理了平台上三十多家违规商户，并进一步提高了租赁行业商户的准入门槛。”
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 31">31</span>
+          <a href="https://new.qq.com/omn/FIN20191/FIN2019102400004400.html" target="_blank" title="Waymo高管指责媒体夸大自动驾驶的商业化前景">Waymo高管指责媒体夸大自动驾驶的商业化前景</a>
+        </div>
+        <div class="details">
+          Waymo首席发言人Tekedra N. Mawakana周二表示，Waymo“一直在经历太多难以控制的媒体炒作。有时候，很多炒作与现实相差甚远。”Mawakana说，虽然现在的报道变得越来越“真实”，但他还是要说，过度的炒作会导致人们产生错误的想法。Mawakana称：“我们希望自动驾驶汽车能够保持低调，不希望媒体对其过度关注和吹捧。”（腾讯证券）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 32">32</span>
+          <a href="http://ir.ctrip.com/news-releases/news-release-details/ctrip-announces-changes-board-composition" target="_blank" title="百度CFO余正钧辞去携程董事，高级副总裁沈抖接任">百度CFO余正钧辞去携程董事，高级副总裁沈抖接任</a>
+        </div>
+        <div class="details">
+          36氪获悉，携程宣布，由百度提名的公司董事、百度CFO余正钧已提交辞呈，辞去公司董事一职。与此同时，百度高级副总裁沈抖已被任命为公司董事。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 33">33</span>
+          <a href="https://36kr.com/p/5258930" target="_blank" title="李国庆最新回应：俞渝诽谤我，等收律师函吧">李国庆最新回应：俞渝诽谤我，等收律师函吧</a>
+        </div>
+        <div class="details">
+          36氪获悉，当当网董事长兼CEO俞渝在李国庆朋友圈爆出众多猛料，称李国庆并非净身出户，每件事都在撒谎。随后李国庆今日凌晨在微博回应称，俞渝对我私生活做出的诽谤和诬蔑，我只想在这里回应一句话：等着收律师函吧。李国庆还称，手里有俞渝在国外给人当小三以及你婚后其他不可告人的实锤和证据，不想揭露都是念在夫妻情分。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 34">34</span>
+          <a href="https://tech.sina.com.cn/it/2019-10-24/doc-iicezuev4464706.shtml" target="_blank" title="WeWork计划裁员4000人，约占其全球员工总数的30%">WeWork计划裁员4000人，约占其全球员工总数的30%</a>
+        </div>
+        <div class="details">
+          WeWork新任董事长马塞洛·克劳尔在一封全公司范围的电子邮件中告诉员工，根据与软银达成的协议，他们将会被裁员。克劳尔写道，他需要“调整业务规模”，使WeWork走上盈利轨道，因此将会有裁员，但克劳尔没有透露裁员人数。知情人士称，WeWork可能会裁员4000人，约占其全球员工总数的30%，约1000个被裁职位是清洁工和类似岗位，公司希望将这些工作外包。（新浪科技）
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 35">35</span>
+          <a href="https://36kr.com/p/5258944" target="_blank" title="特斯拉第三季度意外实现盈利，盘后股价涨超20%">特斯拉第三季度意外实现盈利，盘后股价涨超20%</a>
+        </div>
+        <div class="details">
+          36氪获悉，特斯拉公布2019年第三季度财报，报告显示，特斯拉第三季度总营收为63.03亿美元，同比下降8%，为2012年来首次出现营收的同比下降，并低于FactSet显示的分析师预期的64.3亿美元；归属于普通股股东的净利润为1.43亿美元，同比下降54%，相比之下上一季度净亏损为4.08亿美元。截至发稿，特斯拉盘后股价报307.55美元，涨幅为20.76%。
+        </div>
+      </div>
+    </li>
+    
+</ul>
+  <div class="footer">
+    <p>
+      <a href="https://github.com/jaywcjlove/github-rank/network" target="_blank">
+        <img src="https://img.shields.io/github/forks/jaywcjlove/github-rank.svg">
+      </a>
+      <a href="https://github.com/jaywcjlove/github-rank/stargazers" target="_blank">
+        <img src="https://img.shields.io/github/stars/jaywcjlove/github-rank.svg">
+      </a>
+      <a href="https://www.npmjs.com/package/@wcj/github-rank" target="_blank">
+        <img src="https://img.shields.io/npm/v/@wcj/github-rank.svg">
+      </a>
+      <a href="https://unpkg.com/@wcj/github-rank/web/index.html" target="_blank">
+        <img src="https://img.shields.io/npm/v/@wcj/github-rank.svg?label=unpkg">
+      </a>
+    </p>
+    <div class="time">Last cache created on 2019/10/24 by Github API v3.</div>
+    Create by <a href="https://github.com/jaywcjlove" target="_blank">小弟调调™</a>.
+  </div>
+</body>
+</html>

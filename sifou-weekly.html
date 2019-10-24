@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+  <title> Segmentfault 思否热门 </title>
+  <meta name="description" content="Segmentfault 思否热门">
+  <style>
+    * { box-sizing: border-box; }
+    html, body, ul, li, h1 { margin: 0; padding: 0 }
+    html, body { font-size: 16px; font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif; }
+    ul { list-style: none; }
+    body { text-align: center; }
+    a { color: #333; text-decoration: none; transition: all .2s ease-in; }
+    a:hover { color: #1600ff; }
+    a.github-corner:hover .octo-arm { animation: octocat-wave 560ms ease-in-out; }
+    a.github-corner svg { fill: #f1f1f1; color: #000; position: absolute; top: 0; border: 0; right: 0; z-index: 99; width: 70px; height: 70px; }
+    a.github-corner { position: fixed; z-index: 9999; top: 0; right: 0; }
+    .title { padding: 46px 0 0 0; font-size: 18px; line-height: 24px; }
+    .time, .footer { padding: 5px 0 2px 0; font-size: 12px; color: #adadad; }
+    .tabs { padding: 10px 0 15px 0;}
+    .tabs a { background: #e2e2e2; display: inline-block; padding: 3px 7px; font-size: 12px; line-height: 16px; color: #0366d6; }
+    .tabs a.active { background: #696969; color: #efefef; }
+    .footer { padding: 10px 0 30px 0; }
+    .list { text-align: left; max-width: 470px; margin: 0 auto; padding-bottom: 10px; background-color: #efefef; border-radius: 5px; overflow: hidden; }
+    .list img { width: 36px; height: 36px; border-radius: 3px; display: block; margin: 0 auto; background-color: #e2e2e2; border: 0; overflow: hidden; }
+    .list a { color: #0366d6; }
+    .list a:hover { color: #1600ff; }
+    .list li { padding: 5px; margin: 0 8px; transition: all .3s; border-bottom: 1px solid #d8d8d8; }
+    .list li.rank-title { background-color: #e2e2e2; margin: 0; padding: 7px 13px; margin-bottom: 10px; border-radius: 0; font-size: 14px; line-height: 16px; }
+    .list li.rank-title:hover { background: #e2e2e2; }
+    .list li:last-child, .list li.rank-title { border-bottom: 0; }
+    .list li:hover { background: rgba(255, 255, 255, 0.56); }
+    .list li > div { display: table-cell; vertical-align: top; font-size: 14px; }
+    .list li div.rank { padding: 0 8px; }
+    .list li div.rank span { font-weight: bold; }
+    .list li div.details { padding: 2px 0 0 9px; font-size: 12px; float: left; color: #b9b9b9; }
+    .list li div.details a { color: #b9b9b9; transition: all .3s; }
+    .list li div.details a:hover { color: #1600ff; }
+    .list li div.details a:hover svg { fill: #1600ff; }
+    .list li div.details * { vertical-align: middle; }
+    .list li div.details .localtion { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 150px; display: inline-block; height: 14px; }
+    .list li div.details svg { width: 12px; height: 12px; margin-top: 0; margin-right: 2px; fill: #b9b9b9; display: inline-block; }
+    .list li > div.info { width: 100%; }
+    .list li > div.info i { color: #717171; }
+    .list li > div.info a:hover i { color: #333; }
+    .list li div.sub-title { color: #333; margin: 4px 0 0 3px;}
+    .list li a.language,
+    .list li span.star { height: 18px; background: #e2e2e2; display: inline-block; padding: 2px 4px; border-radius: 3px; }
+    .list li div.followers { font-size: 12px; color: #7d7d7d; white-space:nowrap; padding-left: 5px; padding-top: 2px; border-radius: 3px; }
+    .list li div.followers a { color: #545454; }
+    .list li div.followers * { vertical-align: middle; }
+    .list li div.followers svg { vertical-align: text-top; display: inline-block; fill: #9E9E9E; width: 14px; height: 14px; }
+    .list .select { float: right; line-height: 14px; line-height: 16px; }
+    .list .select .active { color: #333; font-weight: bold; }
+    .list.repos.trending .language > span { border-radius: 50%; display: inline-block; position: relative; height: 10px; width: 10px; vertical-align: middle; top: -1px; margin-right: 4px; }
+    .list.repos li div.followers { display: inline-block; padding-right: 5px; }
+    .list.repos li div.details { width: 100%; }
+    @keyframes octocat-wave{
+      0%,100%{-webkit-transform:rotate(0); transform:rotate(0);}
+      20%,60%{-webkit-transform:rotate(-25deg); transform:rotate(-25deg);}
+      40%,80%{-webkit-transform:rotate(10deg); transform:rotate(10deg);}
+    }
+  </style>
+</head>
+<body>
+  <a href="https://github.com/jaywcjlove/github-rank" target="_blank" class="github-corner">
+    <svg viewBox="0 0 250 250">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path class="octo-arm" fill="currentColor" style="transform-origin: 130px 106px;" d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"></path>
+      <path fill="currentColor" class="octo-body" d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"></path>
+    </svg>
+  </a>
+  <h1 class="title"> Segmentfault 思否热门 </h1>
+  <div class="time">Last cache created on 2019/10/24 by Github API v3.</div>
+  <div class="tabs">
+    <a class="" href="index.html">Users</a>
+    <a class="" href="repos.html">Repos</a>
+    <a class="" href="trending.html">Trending</a>
+    <a class="active" href="sifou-daily.html">Sifou</a>
+    <a class="" href="toutiao-7.html">开发头条</a>
+    <a class="" href="36kr.html">36Kr</a>
+  </div>
+<ul class="list">
+    <li class="rank-title">
+      <a href="https://segmentfault.com/hottest" target="_blank">Segmentfault 思否热门</a>
+      <span class="select">
+        <a class="" href="sifou-daily.html">日热门</a>
+        <a class="active" href="sifou-weekly.html">周热门</a>
+        <a class="" href="sifou-monthly.html">月热门</a>
+      </span>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 1">1</span>
+          <a href="https://segmentfault.com/a/1190000020759924" target="_blank" title="JS 原生面经从初级到高级【近1.5W字】">JS 原生面经从初级到高级【近1.5W字】</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>139</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/huolang_5a14e07d2f2ff"  title="Programming Language">
+            <span>火狼</span>
+          </a>
+        </div>
+        <div class="details">
+          是时候撸一波 JS 基础啦,撸熟了,银十速拿 offer;本文不从传统的问答方式梳理,而是从知识维度梳理,以便形成知识网络包括函数,数组,对象,数据结构,算法,设计模式和 http.
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 2">2</span>
+          <a href="https://segmentfault.com/a/1190000020749133" target="_blank" title="灵活运用JS开发技巧">灵活运用JS开发技巧</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>122</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/yangzw"  title="Programming Language">
+            <span>JowayYoung</span>
+          </a>
+        </div>
+        <div class="details">
+          何为技巧，意指表现在文学、工艺、体育等方面的巧妙技能。代码作为一门现代高级工艺，推动着人类科学技术的发展，同时犹如文字一样承托着人类文化的进步。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 3">3</span>
+          <a href="https://segmentfault.com/a/1190000020784657" target="_blank" title="基于Spring Boot+Spring Security+JWT+Vue前后端分离的开源项目">基于Spring Boot+Spring Security+JWT+Vue前后端分离的开源项目</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>1</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/zhengqing"  title="Programming Language">
+            <span>郑清</span>
+          </a>
+        </div>
+        <div class="details">
+          最近整合Spring Boot+Spring Security+JWT+Vue 完成了一套前后端分离的基础项目，这里把它开源出来分享给有需要的小伙伴们
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 4">4</span>
+          <a href="https://segmentfault.com/a/1190000020762791" target="_blank" title="MySQL的又一神器-锁，MySQL面试必备">MySQL的又一神器-锁，MySQL面试必备</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>36</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/sihai_5ae5ba9170388"  title="Programming Language">
+            <span>欧阳思海</span>
+          </a>
+        </div>
+        <div class="details">
+          原文链接：blog.ouyangsihai.cn &gt;&gt; MySQL的又一神器-锁，MySQL面试必备 在看这篇文章之前，我们回顾一下前面的几篇关于MySQL的文章，应该对你读下面的文章有所帮助。 InnoDB与MyISAM等存储引擎对比 面试官...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 5">5</span>
+          <a href="https://segmentfault.com/a/1190000020780854" target="_blank" title="50行代码完成视频通话 (WebRTC + WebSocket)">50行代码完成视频通话 (WebRTC + WebSocket)</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>17</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/shushushu_5b7a56e782571"  title="Programming Language">
+            <span>shushushu</span>
+          </a>
+        </div>
+        <div class="details">
+          “它（WebRTC）允许网络应用或者站点，在不借助中间媒介的情况下，建立浏览器之间点对点（Peer-to-Peer）的连接，实现视频流和（或）音频流或者其他任意数据的传输”。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 6">6</span>
+          <a href="https://segmentfault.com/a/1190000020775348" target="_blank" title="“寒冬”三年经验前端面试总结（含头条、百度、饿了么、滴滴等）之手写题（二）">“寒冬”三年经验前端面试总结（含头条、百度、饿了么、滴滴等）之手写题（二）</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>17</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/yangyaya"  title="Programming Language">
+            <span>阳呀呀</span>
+          </a>
+        </div>
+        <div class="details">
+          不论是寒冬还是暖冬，找工作之前都需要做好充足的准备，面试的时候才能做到游刃有余。此文是把我最近找工作准备的以及笔试面试中涉及到的手写题做一个总结。给自己，也给需要的同学。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 7">7</span>
+          <a href="https://segmentfault.com/a/1190000020763462" target="_blank" title="vue-next/runtime-core 源码阅读指南">vue-next/runtime-core 源码阅读指南</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>7</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/littlelyon"  title="Programming Language">
+            <span>littleLyon</span>
+          </a>
+        </div>
+        <div class="details">
+          最近又抽时间把 vue-next/runtime-core 的源码陆陆续续地看完了，期间整理了很多笔记，但都是碎片化的。本来是想整理一下，写成一篇文章分享出来的，但是感觉最终的成果物只能是一篇篇幅巨长的解析文，就算我一行...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 8">8</span>
+          <a href="https://segmentfault.com/a/1190000020769492" target="_blank" title="分享一个页面平滑滚动小技巧">分享一个页面平滑滚动小技巧</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>16</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/scaukk"  title="Programming Language">
+            <span>皮小蛋</span>
+          </a>
+        </div>
+        <div class="details">
+          今天写需求的时候发现一个小的优化点：用户选择了一些数据之后, 对应列表中的数据需要高亮， 有时候列表很长， 为了提升用户体验，需要加个滚动， 自动滚动到目标位置。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 9">9</span>
+          <a href="https://segmentfault.com/a/1190000020716933" target="_blank" title="详细判断浏览器运行环境">详细判断浏览器运行环境</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>95</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/yangzw"  title="Programming Language">
+            <span>JowayYoung</span>
+          </a>
+        </div>
+        <div class="details">
+          看到标题，大家就能想起这个需求在很多项目上都能用到。我们部署在Web服务器上的前端应用，既可以用PC浏览器访问，也可以用手机浏览器访问，再加上现在智能设备的推广，我们甚至能在车载系统、穿戴设备和电视平台...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 10">10</span>
+          <a href="https://segmentfault.com/a/1190000020769066" target="_blank" title="[小组分享] React 当中性能优化手段整理">[小组分享] React 当中性能优化手段整理</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>8</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/jiyinyiyong"  title="Programming Language">
+            <span>题叶</span>
+          </a>
+        </div>
+        <div class="details">
+          内部小组分享底稿. 回顾一下 React class 组件的优化 useMemo 提供的优化 React.memo 优化 useCallback 优化 避免 render 当中的 DOM 操作 class 组件的优化 通过判断减少数据变化触发的重新渲染, 以及之后的 DOM...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 11">11</span>
+          <a href="https://segmentfault.com/a/1190000020759658" target="_blank" title="EasyExcel 轻松灵活读取Excel内容">EasyExcel 轻松灵活读取Excel内容</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>22</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/tanrigongyibing"  title="Programming Language">
+            <span>日拱一兵</span>
+          </a>
+        </div>
+        <div class="details">
+          Java 后端程序员应该会遇到读取 Excel 信息到 DB 等相关需求，脑海中可能突然间想起 Apache POI 这个技术解决方案，但是当 Excel 的数据量非常大的时候，你也许发现，POI 是将整个 Excel 的内容全部读出来放入到...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 12">12</span>
+          <a href="https://segmentfault.com/a/1190000020780720" target="_blank" title="一文读懂分布式架构知识体系（内含超全核心知识大图）">一文读懂分布式架构知识体系（内含超全核心知识大图）</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>4</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/jishuxiaonengshouxihaha"  title="Programming Language">
+            <span>技术小能手xihaha</span>
+          </a>
+        </div>
+        <div class="details">
+          导读：本文力求从分布式基础理论、架构设计模式、工程应用、部署运维、业界方案这几大方面，介绍基于 MSA（微服务架构）的分布式知识体系大纲，从而对 SOA 到 MSA 进化有着立体的认识；从概念上和工具应用上更近...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 13">13</span>
+          <a href="https://segmentfault.com/a/1190000020754678" target="_blank" title="Vue组件库搭建实践与探索">Vue组件库搭建实践与探索</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>25</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/zengpeisen_5abdadcc67a6f"  title="Programming Language">
+            <span>曾培森</span>
+          </a>
+        </div>
+        <div class="details">
+          在以前传统的前端页面开发方式时，存在协同困难，可复用性差的问题，导致开发和维护都不是一件简单的事。而组件化思想的提出，以及Vue、React等MV*框架的快速流行，让我们开始尝试用组件化的思想去开发。由于笔者...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 14">14</span>
+          <a href="https://segmentfault.com/a/1190000020762868" target="_blank" title="支撑微博亿级社交平台，小白也能玩转Redis集群(实战篇)">支撑微博亿级社交平台，小白也能玩转Redis集群(实战篇)</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>11</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/fenbushixitongjiagou"  title="Programming Language">
+            <span>分布式系统架构</span>
+          </a>
+        </div>
+        <div class="details">
+          上篇文章《支撑微博亿级社交平台，小白也能玩转Redis集群(原理篇)》介绍了Redis集群相关原理，这篇文章将介绍Redis Cluster集群的搭建、配置，运维、扩容等具体操作
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 15">15</span>
+          <a href="https://segmentfault.com/a/1190000020774875" target="_blank" title="为什么我喜欢 JavaScript 可选链">为什么我喜欢 JavaScript 可选链</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>8</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/evilboy"  title="Programming Language">
+            <span>疯狂的技术宅</span>
+          </a>
+        </div>
+        <div class="details">
+          很多 JavaScript 的特性极大地改变了你的编码方式。从 ES2015 及更高版本开始，对我的代码影响最大的功能是解构、箭头函数、类和模块系统。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 16">16</span>
+          <a href="https://segmentfault.com/a/1190000020765238" target="_blank" title="IOS 浏览器页面布局错位（如：点不到）的分析与解决">IOS 浏览器页面布局错位（如：点不到）的分析与解决</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>12</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/senntyou"  title="Programming Language">
+            <span>senntyou</span>
+          </a>
+        </div>
+        <div class="details">
+          IOS 浏览器软键盘的拉起与收缩、微信 IOS 浏览器底部导航条的显示与隐藏，很容易导致页面布局错位（相对窗体的绝对定位元素）：
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 17">17</span>
+          <a href="https://segmentfault.com/a/1190000020761250" target="_blank" title="马蜂窝 IM 移动端架构的从 0 到 1">马蜂窝 IM 移动端架构的从 0 到 1</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>10</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/mafengwojishu"  title="Programming Language">
+            <span>马蜂窝技术</span>
+          </a>
+        </div>
+        <div class="details">
+          移动互联网技术改变了旅游的世界，这个领域过去沉重的信息分销成本被大大降低。用户与服务供应商之间、用户与用户之间的沟通路径逐渐打通，沟通的场景也在不断扩展。这促使所有的移动应用开发者都要从用户视角出...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 18">18</span>
+          <a href="https://segmentfault.com/a/1190000020750113" target="_blank" title="5个JavaScript 解构的有趣用法">5个JavaScript 解构的有趣用法</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>23</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/evilboy"  title="Programming Language">
+            <span>疯狂的技术宅</span>
+          </a>
+        </div>
+        <div class="details">
+          原文：Dmitri Pavlutin翻译：疯狂的技术宅 原文：[链接] 未经允许严禁转载 如果你查看我的常规 JavaScript 代码，会看到到处都有解构。 读取对象属性和访问数组项是常见的操作。结构使这些操作变得更加轻松和简洁...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 19">19</span>
+          <a href="https://segmentfault.com/a/1190000020755226" target="_blank" title="记json与serialize性能测试">记json与serialize性能测试</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>14</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/chenxiaokai"  title="Programming Language">
+            <span>陈小楷</span>
+          </a>
+        </div>
+        <div class="details">
+          最近在观看swoole官方的课程时，其中有一小段专门说到了json_decode这个函数的效率问题，其慢的原因是在进行转化时需要遍历文中每一个字符去寻找EOF（end of file：文字流的结尾，关于EOF阮一峰大神这篇文章解释...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 20">20</span>
+          <a href="https://segmentfault.com/a/1190000020743430" target="_blank" title="7 个沙雕又带有陷阱的 JS 面试题">7 个沙雕又带有陷阱的 JS 面试题</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>23</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/minnanitkong"  title="Programming Language">
+            <span>前端小智</span>
+          </a>
+        </div>
+        <div class="details">
+          在 JS 面试中，经常会看到一些简单而又沙雕的题目，这些题目包含一些陷阱，但这些在我们规范的编码下或者业务中基本不会出现。 有些面试官就是这样，不专注于制定代码的标准和规范上，却用不规范的代码去检验别人...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 21">21</span>
+          <a href="https://segmentfault.com/a/1190000020471520" target="_blank" title="【JS 口袋书】第 8 章：以更细的角度来看 JS 中的 this">【JS 口袋书】第 8 章：以更细的角度来看 JS 中的 this</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>9</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/minnanitkong"  title="Programming Language">
+            <span>前端小智</span>
+          </a>
+        </div>
+        <div class="details">
+          JS 中的this关键字对于初学者来说是一个谜，对于经验丰富的开发人员来说则是一个永恒的难题。this 实际上是一个移动的目标，在代码执行过程中可能会发生变化，而没有任何明显的原因。首先，看一下this关键字在其...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 22">22</span>
+          <a href="https://segmentfault.com/a/1190000020751429" target="_blank" title="程序员需要了解的硬核知识之CPU">程序员需要了解的硬核知识之CPU</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>15</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/cxuan"  title="Programming Language">
+            <span>cxuan</span>
+          </a>
+        </div>
+        <div class="details">
+          大家都是程序员，大家都是和计算机打交道的程序员，大家都是和计算机中软件硬件打交道的程序员，大家都是和CPU打交道的程序员，所以，不管你是玩儿硬件的还是做软件的，你的世界都少不了计算机最核心的 - CPU
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 23">23</span>
+          <a href="https://segmentfault.com/a/1190000020760897" target="_blank" title="缩短箭头函数的小诀窍">缩短箭头函数的小诀窍</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>8</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/evilboy"  title="Programming Language">
+            <span>疯狂的技术宅</span>
+          </a>
+        </div>
+        <div class="details">
+          作者：Dmitri Pavlutin翻译：疯狂的技术宅 原文：[链接] 未经允许严禁转载 使用箭头语法，你可以定义比函数表达式短的函数。在某些情况下，你可以完全省略： 参数括号 (param1, param2) return 关键字 甚至大括号...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 24">24</span>
+          <a href="https://segmentfault.com/a/1190000020768392" target="_blank" title="不只是块级作用域，你不知道的let和const">不只是块级作用域，你不知道的let和const</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>10</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/xialeistudio"  title="Programming Language">
+            <span>xialeistudio</span>
+          </a>
+        </div>
+        <div class="details">
+          ES6新增了两个重要的关键字let和const，相信大家都不陌生，但是包括我在内，在系统学习ES6之前也只使用到了【不存在变量提升】这个特性。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 25">25</span>
+          <a href="https://segmentfault.com/a/1190000020763010" target="_blank" title="这道Java基础题真的有坑！我求求你，认真思考后再回答。">这道Java基础题真的有坑！我求求你，认真思考后再回答。</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>12</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/whyjishu"  title="Programming Language">
+            <span>why技术</span>
+          </a>
+        </div>
+        <div class="details">
+          全文共计7362个字，46张图。分析的较为详尽，并进行了相关知识点的扩展，所以篇幅较长，建议转发朋友圈或者自己收藏起来，慢慢阅读。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 26">26</span>
+          <a href="https://segmentfault.com/a/1190000020769672" target="_blank" title="Spring Security 实战干货：必须掌握的一些内置 Filter">Spring Security 实战干货：必须掌握的一些内置 Filter</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>7</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/10000000"  title="Programming Language">
+            <span>码农小胖哥</span>
+          </a>
+        </div>
+        <div class="details">
+          上一文我们使用 Spring Security 实现了各种登录聚合的场面。其中我们是通过在 UsernamePasswordAuthenticationFilter 之前一个自定义的过滤器实现的。我怎么知道自定义过滤器要加在 UsernamePasswordAuthenticat...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 27">27</span>
+          <a href="https://segmentfault.com/a/1190000020781728" target="_blank" title="总结网易的年度娱乐圈画转h5画中画的技术实现。">总结网易的年度娱乐圈画转h5画中画的技术实现。</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>3</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/visionm"  title="Programming Language">
+            <span>VisionM</span>
+          </a>
+        </div>
+        <div class="details">
+          前言：花时间学习了网易的年度娱乐圈画转h5的技术实现。有些点比较难懂，故此，做个笔记。如果恰好帮助到你，棒呆
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 28">28</span>
+          <a href="https://segmentfault.com/a/1190000020715919" target="_blank" title="Typescript 进阶">Typescript 进阶</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>40</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/lanlandejishuzhai"  title="Programming Language">
+            <span>懒懒的技术宅</span>
+          </a>
+        </div>
+        <div class="details">
+          这是一篇自己总结的 Typescript type相关的进阶文章，适合有一定ts基础，并在type编写方面感到迷惑、感到绝望的同学，也给那些入门Typescript已久，却无法更上一层楼的童鞋一个方向。如果是Typescript小白，建议...
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 29">29</span>
+          <a href="https://segmentfault.com/a/1190000020764449" target="_blank" title="组装一台自己的深度学习计算机">组装一台自己的深度学习计算机</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>6</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/evilboy"  title="Programming Language">
+            <span>疯狂的技术宅</span>
+          </a>
+        </div>
+        <div class="details">
+          在与 Microsoft Azure GPU VM 奋斗了几年之后，听说亚马逊的 AWS 并没有更好的表现，我觉得应该拥有自己的本地深度学习机器了。
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="info">
+        <div class="rank">
+          <span title="Ranking 30">30</span>
+          <a href="https://segmentfault.com/a/1190000020736966" target="_blank" title="React16源码解析(一)- 图解Fiber架构">React16源码解析(一)- 图解Fiber架构</a>
+        </div>
+        <div class="sub-title followers">
+          
+          <span title="Stargazers Count">
+            <svg width="12" height="12" viewBox="0 0 16 16">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M0 0h16v16H0z"/>
+                <path fill="#9E9E9E" d="M4.234 6.693v7.243H2.881c-.486 0-.881-.492-.881-1.095V7.875c0-.63.412-1.182.88-1.182h1.354zm3.688-3.7C8.01 2.404 8.49 1.99 9.018 2c.754.015 1.204.663 1.36.983.284.585.292 1.549.097 2.167-.177.56-.586 1.296-.586 1.296h3.066c.324 0 .625.164.826.449.204.29.27.668.178 1.011l-1.387 5.183c-.126.499-.544.847-1.016.847H5.53V6.693c1.385-.309 2.236-2.632 2.392-3.7z"/>
+              </g>
+            </svg>
+            <span>16</span>
+          </span>
+          &nbsp;
+          <a target="_blank" href="https://segmentfault.com/u/wenwenjie"  title="Programming Language">
+            <span>小柚子</span>
+          </a>
+        </div>
+        <div class="details">
+          老的react架构从setState到render完成，整个过程是主要霸占主线程的。如果组件比较大，或者有些复杂的逻辑，长时间占用主线程，会导致一些input框输入操作、动画等得不到响应，从而表现出页面卡顿。
+        </div>
+      </div>
+    </li>
+    
+</ul>
+  <div class="footer">
+    <p>
+      <a href="https://github.com/jaywcjlove/github-rank/network" target="_blank">
+        <img src="https://img.shields.io/github/forks/jaywcjlove/github-rank.svg">
+      </a>
+      <a href="https://github.com/jaywcjlove/github-rank/stargazers" target="_blank">
+        <img src="https://img.shields.io/github/stars/jaywcjlove/github-rank.svg">
+      </a>
+      <a href="https://www.npmjs.com/package/@wcj/github-rank" target="_blank">
+        <img src="https://img.shields.io/npm/v/@wcj/github-rank.svg">
+      </a>
+      <a href="https://unpkg.com/@wcj/github-rank/web/index.html" target="_blank">
+        <img src="https://img.shields.io/npm/v/@wcj/github-rank.svg?label=unpkg">
+      </a>
+    </p>
+    <div class="time">Last cache created on 2019/10/24 by Github API v3.</div>
+    Create by <a href="https://github.com/jaywcjlove" target="_blank">小弟调调™</a>.
+  </div>
+</body>
+</html>
